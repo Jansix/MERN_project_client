@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://mern-project-api-five.vercel.app/api/course";
+const API_URL = "https://mern-project-api-five.vercel.app/api/course/";
 
 class CourseService {
   post(title, description, price) {
