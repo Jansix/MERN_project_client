@@ -1,16 +1,6 @@
 import axios from "axios";
 const API_URL = "https://mern-project-api-five.vercel.app/api/user";
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
 class AuthService {
   login(email, password) {
     return axios.post(API_URL + "/login", { email, password });
