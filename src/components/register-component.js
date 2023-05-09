@@ -54,7 +54,7 @@ const RegisterComponent = () => {
           <label htmlFor="email">電子信箱：</label>
           <input
             onChange={handleEmail}
-            type="text"
+            type="email"
             className="form-control"
             name="email"
           />

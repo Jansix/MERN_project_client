@@ -63,6 +63,21 @@ class CourseService {
     });
   }
 
+  //取得所有課程資料
+  getAllCourse() {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+  //註冊課程
   enroll(_id) {
     let token;
     if (localStorage.getItem("user")) {

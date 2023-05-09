@@ -34,11 +34,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 首頁
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/test">
-                測試
-              </Link>
-            </li>
             {!currentUser && (
               <li className="nav-item">
                 <Link className="nav-link" to="/register">

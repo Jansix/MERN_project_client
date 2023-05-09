@@ -6,6 +6,18 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
   let [searchInput, setSearchInput] = useState("");
   let [searchResult, setSearchResult] = useState(null);
+  let [allCourse, setAllCourse] = useState("");
+
+  useEffect(() => {
+    CourseService.getAllCourse()
+      .then((data) => {
+        setAllCourse(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const handleTakeToLogin = () => {
     navigate("/login");
   };
@@ -72,7 +84,7 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
       )}
       {currentUser && searchResult && searchResult.length != 0 && (
         <div>
-          <p>我們從 API 返回的數據。</p>
+          <p>我們從 API 返回的數據。。</p>
           {searchResult.map((course) => (
             <div key={course._id} className="card" style={{ width: "18rem" }}>
               <div className="card-body">
@@ -93,6 +105,23 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {currentUser && !searchResult && (
+        <div>
+          <p>我們從 API 返回的數據。。</p>
+          <div className="card" style={{ width: "18rem" }}>
+            <div className="card-body">
+              <h5 className="card-title">課程名稱：</h5>
+              <p className="card-text"></p>
+              <p>價格: </p>
+              <p>目前的學生人數: </p>
+              <a href="#" className="card-text btn btn-primary">
+                註冊課程
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </div>
