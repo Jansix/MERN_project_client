@@ -1,17 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import AuthService from "../services/auth.service";
+import AuthService from '../services/auth.service';
 
 const NavComponent = ({ currentUser, setCurrentUser }) => {
   const handleLogout = () => {
     AuthService.logout(); //清空存於使用者端的帳密Cookie
-    window.alert("登出成功，將導向首頁");
+    window.alert('登出成功，將導向首頁');
     setCurrentUser(null);
   };
 
   return (
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light  " style={{ backgroundColor: '#e3f2fd' }}>
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           學習系統
@@ -69,14 +69,14 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-            {currentUser && currentUser.user.role == "instructor" && (
+            {currentUser && currentUser.user.role == 'instructor' && (
               <li className="nav-item">
                 <Link className="nav-link" to="/postCourse">
                   新增課程
                 </Link>
               </li>
             )}
-            {currentUser && currentUser.user.role == "student" && (
+            {currentUser && currentUser.user.role == 'student' && (
               <li className="nav-item">
                 <Link className="nav-link" to="/enroll">
                   註冊課程
