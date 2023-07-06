@@ -58,12 +58,12 @@ const LoginComponent = ({ currentUser, setCurrentUser }) => {
         <div style={{ padding: '3rem' }} className="col-md-12">
           <div>{message && <div className="alert alert-danger">{message}</div>}</div>
           <div>
-            <div className="form-group">
+            <div className="form-group ">
               <label htmlFor="username">電子信箱：</label>
               <input onChange={handleEmail} type="email" className="form-control" name="email" />
             </div>
             <br />
-            <div className="form-group">
+            <div className="form-group  ">
               <label htmlFor="password">密碼：</label>
               <input
                 onKeyDown={handleKeyDown} //設定鍵盤事件

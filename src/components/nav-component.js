@@ -5,19 +5,19 @@ import AuthService from '../services/auth.service';
 
 const NavComponent = ({ currentUser, setCurrentUser }) => {
   const handleLogout = () => {
-    AuthService.logout(); //清空存於使用者端的帳密Cookie
+    AuthService.logout(); //登出並清空存於使用者端的帳密Cookie
     window.alert('登出成功，將導向首頁');
     setCurrentUser(null);
   };
 
   return (
-    <nav class="navbar navbar-expand-md navbar-light  " style={{ backgroundColor: '#e3f2fd' }}>
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-md navbar-light  " style={{ backgroundColor: '#e3f2fd' }}>
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           學習系統
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -25,9 +25,9 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link active" to="/">
