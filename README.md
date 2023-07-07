@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# 課程系統
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本系統由 Hugh 開發，是以 MERN 為架構的全端專案。
+前端框架以 React 搭建、後端伺服器為 Express 框架、搭配使用雲端版的 MongoDB 資料庫
+使用者可以註冊成為學生或講師的身分，註冊後即可開始選課或發表課程
 
-## Available Scripts
+此專案學習重點:
 
-In the project directory, you can run:
+1. 熟悉前後端分離的開發概念，以利日後與公司後端工程師順暢合作。
+1. 學習 API 設計原理及資料庫儲存方式
+1. 串接 API 取得資料後處理並調用
+1. Bootstrap 樣式框架運用
+1. 使用者系統建置與驗證技術
+1. React 框架組件化管理與設置
 
-### `npm start`
+## 開發過程中遇到的難題
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+因為先前學習的都是前端相關知識，對於後端較不熟悉
+所幸有大學時期所學的基礎後端及資料庫知識不至於找不到方向
+在開發過程中也遇到了不少難題所幸都一一解決，這邊主要列出 client 的部分
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 首先是 CORS 跨域請求
+  一開始我想在前端請求時加上 header 但似乎沒有效果
+  爬文了解後才知道原來 header 是要加在後端的 response 才會有作用
+  另外還有三個比較常見的解決方案
 
-### `npm test`
+  1. 使用 CORS 套件在後端設置直接解決跨域問題。
+  1. 透過設置 proxy server 的方式讓瀏覽器不用直接向目標伺服器請求資源，進而繞過瀏覽器的跨域機制。
+  1. 以 JSONP 請求資料，利用 script 標籤不會被跨域阻擋的特性，將 URL 及請求參數傳遞給後端請求資料，但有缺點就是只能在 GET 請求時使用。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 另外關於登入的與否的判定、用戶瀏覽權限也讓我頭疼不已，下面簡單列出遇到的問題與解法
 
-### `npm run build`
+  1. 如何判斷用戶是否登入
+     `透過localStorage的方式將登入時後端提供的JWT儲存起來，並在登出時清除，以確認當下用戶是否為登入狀態。`
+  1. 不同身分的用戶可瀏覽的頁面有哪些
+     `將從後端取得的用戶資料儲存成一個共用State，在需要判斷時使用。`
+  1. 登入與未登入的用戶看到的 UI 如何分別設置
+     `透過localStorage目前狀態的判斷確認用戶是否處於登入狀態，並以判斷式決定目前可呈現的UI布局。`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://mern-project-client-ruby.vercel.app/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+可透過下面測試帳號進行網頁功能測試
 
-### `npm run eject`
+```
+student User :student@gmail.com
+Password :123456
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+instructor User :instructor@gmail.com
+Password :123456
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+亦可在註冊欄位建立自己的帳號使用網站功能
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 使用技術
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 響應式網站
+- React 前端框架模組化網頁功能與區塊
+- bootstrap 樣式編輯工具
+- 透過 Node.js、Express、MongoDB 架設後端伺服器
+- RESTful API 架構實踐專案功能
+- 使用 Axios 套件調用 API
+- 以 Vercel 進行前後端部署
+- 使用 JWT 的 Stateless 驗證技術
